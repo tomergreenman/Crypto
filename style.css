@@ -1,13 +1,15 @@
-body {
+body, html {
     overflow-x: hidden;
-    /* background-image: url(/assets/images/clouds-g57124b5ac_1920.jpg); */
+    background-image: url(./assets//images/clouds-g57124b5ac_1920.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
-    background-color: green;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    
 }
 
 header {
-    background-image: url(assets/images/bitcoin-g2161ce0da_1920.jpg);
+    background-image: url(./assets/images/bitcoin-g2161ce0da_1920.jpg);
     background-size: cover;
     height: 350px;
     color: green;
@@ -31,6 +33,7 @@ header span {
 nav {
     background-color: black;
     width: 100%;
+
 }
 
 .card img {
@@ -99,7 +102,7 @@ nav {
 
 #chartContainer {
     margin-top: 20px;
-    height:500px;
+    height: 500px;
 }
 
 .spinner-border {
@@ -147,11 +150,19 @@ img {
     margin-right: 5px;
 }
 
-nav button,
-nav input {
+.container button,
+.container input {
     text-align: center;
-    width: 150px;
     margin-right: 15px;
     height: 40px;
-    border-radius: 5px;
+    border-radius: 10px;
+
+}
+
+#menuButtons{
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }

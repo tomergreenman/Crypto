@@ -1,9 +1,10 @@
 /// <reference path="jquery-3.6.0.js" />
+"use strict";
 
 $(() => {
 
-    load();
     let allCoins = [];
+    load();
     const checkedCoins = new Set();
     let coin6Symbol = "";
 
@@ -78,7 +79,7 @@ $(() => {
         const usd = coin.market_data.current_price.usd.toFixed(2);
         const eur = coin.market_data.current_price.eur.toFixed(2);
         const ils = coin.market_data.current_price.ils.toFixed(2);
-        const coinPrices = {  usd, eur, ils };
+        const coinPrices = { usd, eur, ils };
         return coinPrices;
     }
 
@@ -187,26 +188,26 @@ $(() => {
 
     // Check Box Selected Coins 
     $("#homeSection").on("change", "input[type=checkbox]", function () {
-            const symbol = $(this).attr("data-checkbox-symbol");
-            if (checkedCoins.size === 5) {
-                if ($(this).prop("checked") === true) {
-                    coin6Symbol = symbol;
-                    $(this).prop("checked", false);
-                    const filteredCoins = allCoins.filter(coin => checkedCoins.has(coin.symbol));
-                    popUp(filteredCoins);
-                    $("#cardsDiv .card, #navBar").css("pointer-events", "none");
-                    return;
-                }
-            }
-
+        const symbol = $(this).attr("data-checkbox-symbol");
+        if (checkedCoins.size === 5) {
             if ($(this).prop("checked") === true) {
-                $(`.${symbol}`).prop("checked", true)
-                checkedCoins.add(symbol);
+                coin6Symbol = symbol;
+                $(this).prop("checked", false);
+                const filteredCoins = allCoins.filter(coin => checkedCoins.has(coin.symbol));
+                popUp(filteredCoins);
+                $("#cardsDiv .card, #navBar").css("pointer-events", "none");
                 return;
             }
+        }
 
-            $(`.${symbol}`).prop("checked", false);
-            checkedCoins.delete(symbol);
+        if ($(this).prop("checked") === true) {
+            $(`.${symbol}`).prop("checked", true)
+            checkedCoins.add(symbol);
+            return;
+        }
+
+        $(`.${symbol}`).prop("checked", false);
+        checkedCoins.delete(symbol);
     });
 
     // Cancel Button Function (Leave All Checked Cards As Before) 
@@ -386,7 +387,7 @@ $(() => {
 
             // generates first set of dataPoints 
             updateChart();
-            const intervalId = setInterval(function () { updateChart() }, updateInterval);
+            intervalId = setInterval(function () { updateChart() }, updateInterval);
         }
 
         catch (err) {
@@ -402,6 +403,7 @@ $(() => {
     $("a, .killTimer").on("click", () => {
         restyleSearch();
     });
+
 
 });
 
